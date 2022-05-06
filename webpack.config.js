@@ -1,6 +1,6 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin'); 
+const isDev = process.env.NODE_ENV ==='development';
 
 module.exports = {
   mode: 'development',
@@ -27,10 +27,18 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
     },
+    {
+      test: /\.js$/i,
+      exclude: /node_modules/,
+      use: isDev ? ['eslint-loader'] : '' ,
+    },
+
   ],
  },
  devServer: {
     static: './dist',
     port:3802
   },
+devtool: isDev ? 'source-map' : '',
+
 };

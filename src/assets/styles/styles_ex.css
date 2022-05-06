@@ -1,12 +1,7 @@
-@import "~normalize.css";
-
 .wrapper {
     margin: 0 auto;
     font-family: "Helvetica"
 }
-
-
-
 
 .textarea {
     display: block;
@@ -18,10 +13,6 @@
     color: #444444
 }
 
-.hidden {
-    display: none
-}
-
 .caseDown,
 .caseUp,
 .shiftCaps,
@@ -31,19 +22,7 @@
     min-height: 40px
 }
 
-.description,
-.language,
-.title {
-    margin: 10px auto;
-    text-align: center
-}
-
-.title {
-    font-size: 30px;
-    color: rgba(101, 134, 177, 0.8);
-    -webkit-text-stroke: 1px rgba(114, 177, 101, 0.8);
-    -webkit-text-fill-color: rgba(101, 134, 177, 0.8)
-}
+c
 
 .keyboard {
     width: 704px;
@@ -78,6 +57,7 @@
     user-select: none;
     transition: border-radius 0.3s, background-color 0.3s
 }
+
 .keyboard .key:hover {
     background: #79aa89
 }
@@ -129,12 +109,3 @@
 .keyboard .Space {
     width: 330px
 }
-
-
-
-/* .img{
-margin-left: 300px;
-width: 300px;
-height: 300px;
-background-color: #ff00;
-} */
