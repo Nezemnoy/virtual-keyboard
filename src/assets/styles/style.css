@@ -5,9 +5,6 @@
     font-family: "Helvetica"
 }
 
-
-
-
 .textarea {
     display: block;
     width: 700px;
@@ -96,24 +93,22 @@
 .keyboard .Backspace,
 .keyboard .CapsLock,
 .keyboard .ControlLeft,
-.keyboard .ControlRight,
+.keyboard .Cmd,
 .keyboard .Delete,
 .keyboard .Enter,
 .keyboard .ShiftLeft,
 .keyboard .ShiftRight,
 .keyboard .Tab,
+.keyboard .Fn,
 .keyboard .MetaLeft {
-    font-weight: 600;
+    font-weight: 500;
     background-color: #222222
-}
-
-.keyboard .Tab {
-    width: 50px
 }
 
 .keyboard .Backspace,
 .keyboard .CapsLock,
-.keyboard .ShiftLeft {
+.keyboard .ShiftLeft,
+.keyboard .Tab {
     width: 100px
 }
 
@@ -127,10 +122,15 @@
 }
 
 .keyboard .Space {
-    width: 330px
+    width: 283px
 }
 
-
+.keyboard .ShiftRight {
+    width: 86px
+}
+.keyboard .ShiftLeft {
+    width: 53px
+}
 
 /* .img{
 margin-left: 300px;

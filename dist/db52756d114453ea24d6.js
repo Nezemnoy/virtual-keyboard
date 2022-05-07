@@ -199,28 +199,6 @@ module.exports = function (item) {
 
 /***/ }),
 
-/***/ "./src/scripts/view.js":
-/*!*****************************!*\
-  !*** ./src/scripts/view.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createImg": () => (/* binding */ createImg)
-/* harmony export */ });
-function createImg(url, container){
-
-    const img = document.createElement("img")
-    img.className = "img";
-    img.src = url;
-    container.appendChild(img);
-};
-
-
-
-/***/ }),
-
 /***/ "./src/assets/styles/style.css":
 /*!*************************************!*\
   !*** ./src/assets/styles/style.css ***!
@@ -579,16 +557,6 @@ function styleTagTransform(css, styleElement) {
 
 module.exports = styleTagTransform;
 
-/***/ }),
-
-/***/ "./src/assets/image/pets-woody.png":
-/*!*****************************************!*\
-  !*** ./src/assets/image/pets-woody.png ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "4a5693aab35b2a8ca8ac.png";
-
 /***/ })
 
 /******/ 	});
@@ -642,18 +610,6 @@ module.exports = __webpack_require__.p + "4a5693aab35b2a8ca8ac.png";
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -670,26 +626,6 @@ module.exports = __webpack_require__.p + "4a5693aab35b2a8ca8ac.png";
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/publicPath */
-/******/ 	(() => {
-/******/ 		var scriptUrl;
-/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-/******/ 		var document = __webpack_require__.g.document;
-/******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript)
-/******/ 				scriptUrl = document.currentScript.src
-/******/ 			if (!scriptUrl) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
-/******/ 			}
-/******/ 		}
-/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
-/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
-/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl;
-/******/ 	})();
-/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
@@ -698,20 +634,82 @@ var __webpack_exports__ = {};
   !*** ./src/scripts/index.js ***!
   \******************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./view */ "./src/scripts/view.js");
-/* harmony import */ var _assets_styles_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/styles/style.css */ "./src/assets/styles/style.css");
-/* harmony import */ var _assets_image_pets_woody_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/image/pets-woody.png */ "./src/assets/image/pets-woody.png");
+/* harmony import */ var _assets_styles_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/styles/style.css */ "./src/assets/styles/style.css");
+
+
+
+const BODY = document.querySelector('.body'); 
+
+BODY.innerHTML = '';
+
+const WRAPPER  = document.createElement("div");
+const TEXTAREA  = document.createElement("textarea");
+const KEYBOARD = document.createElement("div");
+const ROW_1 = document.createElement("div");
+const ROW_2 = document.createElement("div");
+
+const KEY = document.createElement("div");
+
+WRAPPER.classList.add("wrapper");
+TEXTAREA.classList.add("textarea");
+KEYBOARD.classList.add("keyboard");
+ROW_1.classList.add("row");
+ROW_2.classList.add("row");
+KEY.classList.add("key");
+BODY.appendChild(WRAPPER);
+WRAPPER.appendChild(TEXTAREA);
+WRAPPER.appendChild(KEYBOARD);
+KEYBOARD.appendChild(ROW_1);
+KEYBOARD.appendChild(ROW_2);
+
+ROW_1.appendChild(KEY);
+KEY.innerText = "Q";
+
+let row_fun;
+
+function addRoww (){
+
+for (let i=0; i<0; i++)
+{
+    console.log(i)
+    row_fun = document.createElement("div");
+    row_fun.classList.add("row");
+    KEYBOARD.appendChild(row_fun);
+    row_fun.setAttribute("id", i);
+}
+}
+
+addRoww();
 
 
 
 
-const wrapper = document.getElementById('wrapper');
 
-const unused = 5;
 
-(0,_view__WEBPACK_IMPORTED_MODULE_0__.createImg)(_assets_image_pets_woody_png__WEBPACK_IMPORTED_MODULE_2__, wrapper);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { createImg } from "./view"
+// import "../assets/styles/style.css";
+// import dogPng from "../assets/image/pets-woody.png"
+
+// const wrapper = document.getElementById('wrapper');
+
+// const unused = 5;
+
+// createImg(dogPng, wrapper);
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=64e3307c9be15dc2ad94.js.map
+//# sourceMappingURL=db52756d114453ea24d6.js.map
