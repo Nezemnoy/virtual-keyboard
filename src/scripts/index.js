@@ -1,6 +1,10 @@
 
 import "../assets/styles/style.css";
-import { addRow } from "./row"
+import { addRow } from "./row";
+import { mouseListener } from "./mouseListener";
+import { addKey } from "./key";
+import { keyHandler } from "./keyHandler";
+import { letterCreate } from "./letterCreation";
 
 const BODY = document.querySelector('.body'); 
 
@@ -10,6 +14,10 @@ const WRAPPER  = document.createElement("div");
 const TEXTAREA  = document.createElement("textarea");
 const KEYBOARD = document.createElement("div");
 
+let row; 
+let key;
+let engKeyboard =['§','1','2','3','4','5','6','7','8','9','0',"-","+","q",'w','e','r','t','y','u','i','o','p','[',']','a','s','d','f','g','h','j','k','l',';',"'","`",'z','x','c','v','b','n','m',',','.','/'];
+
 
 WRAPPER.classList.add("wrapper");
 TEXTAREA.classList.add("textarea");
@@ -18,25 +26,17 @@ BODY.appendChild(WRAPPER);
 WRAPPER.appendChild(TEXTAREA);
 WRAPPER.appendChild(KEYBOARD);
 
+TEXTAREA.setAttribute("id", "area");
+document.getElementById("area").readOnly = true;
+document.getElementById("area").autofocus = true;
+
+
 addRow(KEYBOARD);
+addKey();
+letterCreate (engKeyboard);
+mouseListener(TEXTAREA); 
+keyHandler(TEXTAREA); 
 
-
-let row; 
-let key;
-
-for (let j = 0; j<5; j++)
-
-{
-    row = document.querySelector(`#row${j}`);
-
-for (let i = 0; i<14; i++){
-    key = document.createElement("div");
-    key.classList.add("key");
-    key.setAttribute("id", `row${j}key${i}`);
-    key.setAttribute("type", "letter");
-    row.appendChild(key) 
-    }   
-}
 
 // back-space
 
@@ -165,47 +165,15 @@ arrowRight.innerText = "R";
  cmdLeft.innerText = "Cmd";
 
 
- let engKeyboard =['§','1','2','3','4','5','6','7','8','9','0',"-","+","q",'w','e','r','t','y','u','i','o','p','[',']','a','s','d','f','g','h','j','k','l',';',"'","`",'z','x','c','v','b','n','m',',','.','/'];
- let attribute; 
-
-key = document.querySelectorAll('.key');
-
-let i = 0;
-
-key.forEach(element => {
-    attribute = element.getAttribute("type");
-         if (attribute==='letter'){
-            element.innerText = engKeyboard[i]; 
-            i++;
-           }     
-});
 
 
 
 
-// readonly
 // text.innerHTML.slice(0, input.innerHTML.length - 1)
 
 
 
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { createImg } from "./view"
 // import "../assets/styles/style.css";
