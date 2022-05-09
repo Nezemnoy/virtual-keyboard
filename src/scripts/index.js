@@ -1,6 +1,10 @@
 
 import "../assets/styles/style.css";
-import { addRow } from "./row"
+import { addRow } from "./row";
+import { mouseListener } from "./mouseListener";
+import { addKey } from "./key";
+import { keyHandler } from "./keyHandler";
+import { letterCreate } from "./letterCreation";
 
 const BODY = document.querySelector('.body'); 
 
@@ -9,7 +13,15 @@ BODY.innerHTML = '';
 const WRAPPER  = document.createElement("div");
 const TEXTAREA  = document.createElement("textarea");
 const KEYBOARD = document.createElement("div");
+let text ='';
 
+let row; 
+let key;
+let engKeyboard =['§','1','2','3','4','5','6','7','8','9','0',"-","+","q",'w','e','r','t','y','u','i','o','p','[',']','a','s','d','f','g','h','j','k','l',';',"'","`",'z','x','c','v','b','n','m',',','.','/'];
+let rusKeyboard = ['й','ц','у','к','е','н','г','ш','щ','з','х','ъ','ф','ы','в','а','п','р','о','л','д','ж','э','ё','я','ч','с','м','и','т','ь','б','ю'];
+
+//q - 13
+//ru - 33
 
 WRAPPER.classList.add("wrapper");
 TEXTAREA.classList.add("textarea");
@@ -18,25 +30,16 @@ BODY.appendChild(WRAPPER);
 WRAPPER.appendChild(TEXTAREA);
 WRAPPER.appendChild(KEYBOARD);
 
+TEXTAREA.setAttribute("id", "area");
+// document.getElementById("area").setAttribute("readonly", true);
+// document.getElementById("area").setAttribute("autofocus", true);
+TEXTAREA.focus();
+
 addRow(KEYBOARD);
+addKey();
+mouseListener(TEXTAREA,text); 
+keyHandler(TEXTAREA,text); 
 
-
-let row; 
-let key;
-
-for (let j = 0; j<5; j++)
-
-{
-    row = document.querySelector(`#row${j}`);
-
-for (let i = 0; i<14; i++){
-    key = document.createElement("div");
-    key.classList.add("key");
-    key.setAttribute("id", `row${j}key${i}`);
-    key.setAttribute("type", "letter");
-    row.appendChild(key) 
-    }   
-}
 
 // back-space
 
@@ -52,7 +55,7 @@ let tab = document.querySelector('#row1key0')
 //  row = document.querySelector("#row1");
  let slash = document.querySelector("#row1key13");
  slash.setAttribute("type", "slash");
- slash.innerText = 'sl';
+ slash.innerText = '⃥';
 //  row.removeChild(key);
 
  let capsLock = document.querySelector('#row2key0')
@@ -135,22 +138,22 @@ let tab = document.querySelector('#row1key0')
 let arrowUp = document.querySelector('#row3key12')
 arrowUp.setAttribute("type", "arrowup");
 arrowUp.classList.add('ArrowUp');
-arrowUp.innerText = "U";
+arrowUp.innerText = "▲";
 
 let arrowDown = document.querySelector('#row4key7')
 arrowDown.setAttribute("type", "arrowdown");
 arrowDown.classList.add('ArrowDown');
-arrowDown.innerText = "D";
+arrowDown.innerText = "▼";
 
 let arrowLeft = document.querySelector('#row4key6')
 arrowLeft.setAttribute("type", "arrowleft");
 arrowLeft.classList.add('ArrowLeft');
-arrowLeft.innerText = "L";
+arrowLeft.innerText = "◀";
 
 let arrowRight = document.querySelector('#row4key8')
 arrowRight.setAttribute("type", "arrowright");
 arrowRight.classList.add('ArrowRight');
-arrowRight.innerText = "R";
+arrowRight.innerText = "▶";
 
 
 // right/left cdm add
@@ -164,46 +167,31 @@ arrowRight.innerText = "R";
  cmdLeft.classList.add('Cmd');
  cmdLeft.innerText = "Cmd";
 
+ 
 
- let engKeyboard =['§','1','2','3','4','5','6','7','8','9','0',"-","+","q",'w','e','r','t','y','u','i','o','p','[',']','a','s','d','f','g','h','j','k','l',';',"'","`",'z','x','c','v','b','n','m',',','.','/'];
- let attribute; 
+ letterCreate (engKeyboard);
+ 
+ 
+ document.addEventListener('keydown', function(event) {
 
-key = document.querySelectorAll('.key');
+  // event.preventDefault();  
 
-let i = 0;
+  if ((event.ctrlKey) && (event.metaKey)) {
+    console.log('Undo!')
 
-key.forEach(element => {
-    attribute = element.getAttribute("type");
-         if (attribute==='letter'){
-            element.innerText = engKeyboard[i]; 
-            i++;
-           }     
+
+  }
 });
 
 
 
 
-// readonly
+
 // text.innerHTML.slice(0, input.innerHTML.length - 1)
 
+// String.fromCharCode()
 
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// += '➤'
 
 
 
