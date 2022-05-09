@@ -1,13 +1,25 @@
-import { mouseListener } from "./mouseListener";
-
 export function keyHandler (TEXTAREA, text) {
 
-    TEXTAREA.onkeydown = textHandler 
+    let d;
+
+    TEXTAREA.addEventListener('keydown', function(event) {
+        console.log(event.code);
+        d = document.querySelector(`[name=${event.code}]`)
+        d.classList.add("active");
+       
+    }  )
+  
+    TEXTAREA.addEventListener('keyup', function(event) {
+      d = document.querySelector(`[name=${event.code}]`)
+      d.classList.remove("active");
+   
+  }  )
+
+    TEXTAREA.onkeydown = textHandler;
     TEXTAREA.onkeyup = capslockHandler;
+    let l;
 
-    
    function capslockHandler(e){ 
-
 
     if (e.key=='CapsLock') {
         toLowerCaseFun();  
@@ -18,26 +30,39 @@ export function keyHandler (TEXTAREA, text) {
     
      e.preventDefault();  
      
-    // TEXTAREA.scrollTop = 1e6;
-    // let text;
 
     if (e.key=='CapsLock') {
         toUpperCaseFun();     
      }
 
-    // if (!e.getModifierState('CapsLock')){toLowerCaseFun();}
-
-    if ((!e.altKey)&&(!e.shiftKey)&&(!e.ctrlKey)&&(!e.metaKey)&&(e.key!='Tab')&&(e.key!='CapsLock')&&(e.key!='Backspace')&&(e.key!='Enter')&&(e.key!='ArrowUp')&&(e.key!='ArrowDown')&&(e.key!='ArrowLeft')&&(e.key!='ArrowRight'))
+    if ((!e.altKey)&&(!e.shiftKey)&&(!e.ctrlKey)&&(!e.metaKey)&&(e.key!='Tab')&&(e.key!='CapsLock')&&(e.key!='Backspace')&&(e.key!='Enter')&&(e.key!='ArrowUp')&&(e.key!='ArrowDown')&&(e.key!='ArrowLeft')&&(e.key!='ArrowRight')&&(e.key!='Space'))
    
 { 
-    text = e.key;
-    console.log(e.code)
-    TEXTAREA.value += text;  
+  let s = document.querySelector(`[name=${e.code}]`)
+  
+  if ((s.getAttribute("type")=="slash")||(s.getAttribute("type")=="letter")||(s.getAttribute("type")=="number"))
+    {text = s.innerText;}
+
+    else {text = e.key} 
+
+    console.log(e.code);
+ 
+    TEXTAREA.value += text; 
+    
+    TEXTAREA.onkeydown = '';
+    TEXTAREA.onkeyup ='';
 }
 
    else if (e.key=='Tab'){
     
         text = '\t';
+        TEXTAREA.value += text;  
+
+    }
+
+    else if (e.key=='Space'){
+    
+        text = ' ';
         TEXTAREA.value += text;  
 
     }
@@ -109,7 +134,28 @@ export function keyHandler (TEXTAREA, text) {
                                }     
                     });
     }
+
+    
 }
 
 
 
+
+// key.addEventListener('mousedown', (e) => {  
+        
+//     key.classList.add("active");
+
+// });
+
+// key.addEventListener('pointermove', (e) => {  
+    
+//     key.classList.remove("active");
+
+// });
+
+
+// key.addEventListener('mouseup', (e) => {  
+    
+//     key.classList.remove("active");
+
+// });
