@@ -30,7 +30,7 @@ module.exports = {
     {
       test: /\.js$/i,
       exclude: /node_modules/,
-      use: isDev ? ['eslint-loader'] : ''
+      use: ['eslint-loader']
     },
 
   ],
@@ -39,5 +39,5 @@ module.exports = {
     static: './dist',
     port:3802
   },
-    devtool: isDev ? 'source-map' : ''
+    devtool: 'source-map'
 };
