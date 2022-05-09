@@ -137,25 +137,3 @@ export function keyHandler (TEXTAREA, text) {
 
     
 }
-
-
-
-
-// key.addEventListener('mousedown', (e) => {  
-        
-//     key.classList.add("active");
-
-// });
-
-// key.addEventListener('pointermove', (e) => {  
-    
-//     key.classList.remove("active");
-
-// });
-
-
-// key.addEventListener('mouseup', (e) => {  
-    
-//     key.classList.remove("active");
-
-// });
